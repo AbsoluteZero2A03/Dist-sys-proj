@@ -17,3 +17,10 @@ json recv_spec_msg(zmq::socket_t * socket) {
 }
 
 
+void store_connection(json j) {
+    redis3m::connection::ptr_t conn = redis3m::connection::create();
+    std::string ip = j["ip"];
+    std::string whole_thing = j.dump();
+
+    conn->run(redis3m::command("SET") << ip << whole_thing);
+}

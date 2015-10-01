@@ -1,4 +1,4 @@
-CXXFLAGS = -L lib/ -I lib/ -lzmq -lredis3m -std=c++11
+CXXFLAGS = -L /usr/local/lib/ -I /usr/local/include/ -L lib/ -I lib/ -lzmq -lredis3m -std=c++11
 CXX = g++
 
 broker :

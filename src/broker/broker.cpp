@@ -1,4 +1,4 @@
-#include <zmq.hpp>
+#include "cppzmq/zmq.hpp"
 #include <map>
 #include "json/json.hpp"
 #include "connections.hpp"
@@ -12,7 +12,7 @@ int main () {
 
     while (true) {
         zmq::message_t request;
-        recv_spec_msg(request, socket, &curr_connections);
+        recv_spec_msg(&request, &socket, &curr_connections);
     }
     
     return 0;

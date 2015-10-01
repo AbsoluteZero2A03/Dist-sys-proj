@@ -1,15 +1,15 @@
 #include "connections.hpp"
 using json = nlohmann::json;
 // Checks if it's a valid message
-json recv_spec_msg(zmq::message_t request, zmq::socket_t socket, std::map<std::string, zmq::socket_t *> *curr) { 
-    socket.recv(&request);
+json recv_spec_msg(zmq::message_t * request, zmq::socket_t *socket, std::map<std::string, zmq::socket_t *> *curr) { 
+    socket->recv(request);
     try {
-        std::string rpl = std::string(static_cast<char *>(request.data()),request.size());
+        std::string rpl = std::string(static_cast<char *>(request->data()),request->size());
         json j = json(rpl);
         store_connection(j);
         return j;
         std::string ip = j["ip"];
-        (*curr)[ip] = &socket;
+        (*curr)[ip] = socket;
     } catch (std::exception& e) {
         json j = {
             {"error", e.what()}

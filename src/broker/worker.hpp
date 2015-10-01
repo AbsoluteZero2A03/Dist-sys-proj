@@ -1,8 +1,15 @@
 #include "cppzmq/zmq.hpp"
+#include <thread>
 
-class SkidooshBrokerWorker {
+class SkidooshBrokerTask {
     public:
-        SkidooshBrokerWorker();
+        SkidooshBrokerTask() : ctx(1), frontend(ctx,ZMQ_ROUTER),backend(ctx,ZMQ_DEALER) {}; 
+        void run();
     private:
+        zmq::context_t ctx;
+        zmq::socket_t frontend;
+        zmq::socket_t backend;
         int ayy();
 };
+
+

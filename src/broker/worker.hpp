@@ -4,6 +4,7 @@
 class SkidooshBrokerTask {
     public:
         SkidooshBrokerTask() : ctx(1), frontend(ctx,ZMQ_ROUTER),backend(ctx,ZMQ_DEALER) {}; 
+        enum { kMaxThread = 5 };
         void run();
     private:
         zmq::context_t ctx;
@@ -12,4 +13,7 @@ class SkidooshBrokerTask {
         int ayy();
 };
 
-
+class SkidooshBrokerWorker {
+    public:
+        SkidooshBroker();
+}

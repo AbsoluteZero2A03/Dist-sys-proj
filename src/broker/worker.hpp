@@ -10,10 +10,12 @@ class SkidooshBrokerTask {
         zmq::context_t ctx;
         zmq::socket_t frontend;
         zmq::socket_t backend;
-        int ayy();
 };
 
 class SkidooshBrokerWorker {
     public:
-        SkidooshBroker();
-}
+        SkidooshBrokerWorker(zmq::context_t &c, int sock_type): ctx(c), wk_sck(ctx, sock_type) {};
+    private:
+        zmq::context_t &ctx;
+        zmq::socket_t wk_sck;
+};

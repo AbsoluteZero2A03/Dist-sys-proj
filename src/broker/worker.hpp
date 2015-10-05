@@ -1,4 +1,6 @@
 #include "cppzmq/zmq.hpp"
+#include <vector>
+#include <functional>
 #include <thread>
 
 class SkidooshBrokerTask {
@@ -15,6 +17,7 @@ class SkidooshBrokerTask {
 class SkidooshBrokerWorker {
     public:
         SkidooshBrokerWorker(zmq::context_t &c, int sock_type): ctx(c), wk_sck(ctx, sock_type) {};
+        void work();
     private:
         zmq::context_t &ctx;
         zmq::socket_t wk_sck;

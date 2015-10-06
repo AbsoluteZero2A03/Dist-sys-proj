@@ -26,7 +26,19 @@ void SkidooshBrokerTask::run() {
 }
 
 void SkidooshBrokerWorker::work() {
-    
+    wk_sck.connect("inproc://backend");        
+    try {
+        while (true) {
+            zmq::message_t identity;
+            zmq::message_t msg;
+            zmq::message_t copied_id;
+            zmq::message_t copied_msg;
+            wk_sck.recv(&identity);
+            wk_sck.recv(&msg);
+
+             
+        }
+    } catch (std::exception &e) {}
 }
 
 

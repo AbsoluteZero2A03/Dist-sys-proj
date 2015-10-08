@@ -1,3 +1,4 @@
+#include <redis3m/redis3m.hpp>
 #include "cppzmq/zmq.hpp"
 #include <vector>
 #include <functional>

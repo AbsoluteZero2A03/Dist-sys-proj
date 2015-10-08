@@ -33,9 +33,11 @@ void SkidooshBrokerWorker::work() {
             zmq::message_t msg;
             zmq::message_t copied_id;
             zmq::message_t copied_msg;
+            std::string rq_str;
             wk_sck.recv(&identity);
             wk_sck.recv(&msg);
 
+            rq_str = std::string(static_cast<char *>(msg.data()),msg.size());
              
         }
     } catch (std::exception &e) {}

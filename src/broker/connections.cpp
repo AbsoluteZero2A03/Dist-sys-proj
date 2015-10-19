@@ -1,7 +1,6 @@
 #include "connections.hpp"
 using json = nlohmann::json;
 json recv_spec_msg(std::string req) { 
-    socket->recv(request);
     try {
         json j = json(req);
         store_connection(j);

@@ -8,9 +8,8 @@
 
 int main () {
     
-    std::map<std::string, zmq::socket_t *> curr_connections;
     SkidooshBrokerTask btask;
-    std::thread th1(std::bind(&SkidooshBrokerTask::run, &btask));
-    
+    std::thread th1(std::bind(&SkidooshBrokerTask::run,&btask));
+    th1.detach();
     return 0;
 }

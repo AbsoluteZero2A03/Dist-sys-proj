@@ -8,6 +8,6 @@ class DatabaseDaemon {
         DatabaseDaemon();
         void work();
     private:
-        zmq::socket_t relay;
+//        zmq::socket_t relay;
         std::list<std::string> waiting;
 };

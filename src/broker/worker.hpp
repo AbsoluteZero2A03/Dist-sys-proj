@@ -3,6 +3,7 @@
 #include <vector>
 #include <functional>
 #include <thread>
+#include "connections.hpp"
 
 class SkidooshBrokerTask {
     public:

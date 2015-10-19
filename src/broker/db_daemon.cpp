@@ -1,3 +1,4 @@
+#include "db_daemon.hpp"
 DatabaseDaemon::DatabaseDaemon() {
 
 }

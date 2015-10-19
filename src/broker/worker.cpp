@@ -38,7 +38,8 @@ void SkidooshBrokerWorker::work() {
             wk_sck.recv(&msg);
 
             rq_str = std::string(static_cast<char *>(msg.data()),msg.size());
-            recv_spec_msg(rq_str);
+            copied_id.copy(&identity);
+            copied_msg.copy(&msg);
         }
     } catch (std::exception &e) {}
 }

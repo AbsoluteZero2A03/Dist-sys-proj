@@ -9,7 +9,6 @@
 int main () {
     
     SkidooshBrokerTask btask;
-    std::thread th1(std::bind(&SkidooshBrokerTask::run,&btask));
-    th1.detach();
+    btask.run();
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <redis3m/redis3m.hpp>
 #include "cppzmq/zmq.hpp"
+#include <iostream>
 #include <vector>
 #include <functional>
 #include <thread>
@@ -19,6 +20,7 @@ class SkidooshBrokerTask {
 class SkidooshBrokerWorker {
     public:
         SkidooshBrokerWorker(zmq::context_t &c, int sock_type): ctx(c), wk_sck(ctx, sock_type) {};
+        ~SkidooshBrokerWorker();
         void work();
     private:
         zmq::context_t &ctx;

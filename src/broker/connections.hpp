@@ -1,3 +1,4 @@
+#include <iostream>
 #include <redis3m/redis3m.hpp>
 #include "json/json.hpp"
 #include "cppzmq/zmq.hpp"

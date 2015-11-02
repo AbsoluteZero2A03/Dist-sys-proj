@@ -20,6 +20,7 @@ void store_connection(json j) {
     std::string whole_thing = j.dump();
 
     conn->run(redis3m::command("SET") << ip << whole_thing);
+    std::cout << "success" << std::endl;
 }
 
 // delete a connection on disconnect

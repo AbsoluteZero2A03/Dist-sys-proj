@@ -16,7 +16,7 @@ void SkidooshBrokerTask::run() {
     try {
         zmq::proxy(&frontend,&backend,nullptr);
     } catch (std::exception &e) {
-
+        std::cout << "zmq::proxy: " <<  e.what() << std::endl;
 
     }
     while (true){}

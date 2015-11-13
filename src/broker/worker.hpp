@@ -8,7 +8,7 @@
 
 class SkidooshBrokerTask {
     public:
-        SkidooshBrokerTask() : ctx(1), frontend(zmq::socket_t(ctx,ZMQ_ROUTER)),backend(zmq::socket_t(ctx,ZMQ_DEALER)) {}; 
+        SkidooshBrokerTask() : ctx(1), frontend(ctx,ZMQ_ROUTER),backend(ctx,ZMQ_DEALER) {}; 
         enum { kMaxThread = 5 };
         void run();
     private:
@@ -20,7 +20,6 @@ class SkidooshBrokerTask {
 class SkidooshBrokerWorker {
     public:
         SkidooshBrokerWorker(zmq::context_t &c, int sock_type): ctx(c), wk_sck(ctx, sock_type) {};
-        ~SkidooshBrokerWorker();
         void work();
     private:
         zmq::context_t &ctx;

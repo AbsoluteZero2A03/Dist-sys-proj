@@ -1,5 +1,4 @@
-#include "worker.hpp"
-
+#include "worker.hpp" 
 void SkidooshBrokerTask::run() {
     frontend.bind("tcp://*:20401");
     backend.bind("inproc://backend");
@@ -19,13 +18,11 @@ void SkidooshBrokerTask::run() {
         std::cout << "zmq::proxy: " <<  e.what() << std::endl;
 
     }
-    while (true){}
     
-
-/*    for (int i=0;i<kMaxThread; ++i) {
+    for (int i=0;i<kMaxThread; ++i) {
         delete workers[i];
         delete worker_threads[i];
-    }*/
+    }
 
 }
 

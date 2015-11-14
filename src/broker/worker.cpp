@@ -20,7 +20,6 @@ void SkidooshBrokerTask::run() {
         zmq::proxy((void *)frontend,(void * )backend,NULL);
     } catch (std::exception &e) {
         std::cout << "zmq::proxy: " <<  e.what() << std::endl;
-
     }
     
     for (int i=0;i<kMaxThread; ++i) {
@@ -34,16 +33,18 @@ void SkidooshBrokerWorker::work() {
     wk_sck.connect("inproc://backend");        
     try {
         while (true) {
-            std::cout << "asdf" << std::endl;
             zmq::message_t identity;
             zmq::message_t msg;
             zmq::message_t copied_id;
             zmq::message_t copied_msg;
+            std::string id_str;
             std::string rq_str;
             wk_sck.recv(&identity);
             wk_sck.recv(&msg);
 
+            id_str = std::string(static_cast<char *>(identity.data()),identity.size());
             rq_str = std::string(static_cast<char *>(msg.data()),msg.size());
+            std::cout << "received " << rq_str << " from " << id_str << std::endl;
             recv_spec_msg(rq_str);
             copied_id.copy(&identity);
             copied_msg.copy(&msg);

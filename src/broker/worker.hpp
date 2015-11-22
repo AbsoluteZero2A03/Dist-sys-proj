@@ -5,6 +5,7 @@
 #include <functional>
 #include <thread>
 #include "connections.hpp"
+#include "db_daemon.h"
 
 class SkidooshBrokerTask {
     public:
@@ -15,6 +16,7 @@ class SkidooshBrokerTask {
         zmq::context_t ctx;
         zmq::socket_t frontend;
         zmq::socket_t backend;
+        DatabaseDaemon daemon;
 };
 
 class SkidooshBrokerWorker {

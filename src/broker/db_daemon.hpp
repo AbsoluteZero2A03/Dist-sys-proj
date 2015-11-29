@@ -2,6 +2,7 @@
 #include <string>
 #include "json/json.hpp"
 #include "cppzmq/zmq.hpp"
+#include <sstream>
 #include <redis3m/redis3m.hpp> 
 
 

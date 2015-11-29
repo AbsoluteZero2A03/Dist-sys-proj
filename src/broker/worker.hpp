@@ -1,11 +1,15 @@
 #include <redis3m/redis3m.hpp>
 #include "cppzmq/zmq.hpp"
+#include "json/json.hpp"
+#include <sstream>
 #include <iostream>
 #include <vector>
 #include <functional>
 #include <thread>
 #include "connections.hpp"
 #include "db_daemon.hpp"
+
+using json = nlohmann::json;
 
 class SkidooshBrokerTask {
     public:

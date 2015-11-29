@@ -44,8 +44,22 @@ void SkidooshBrokerWorker::work() {
 
             id_str = std::string(static_cast<char *>(identity.data()),identity.size());
             rq_str = std::string(static_cast<char *>(msg.data()),msg.size());
+
+            json j;
+            std::stringstream ss;
+            ss << rq_str;
+            ss >> j;
+
+            j["identity"] = id_str;
+            ss.clear();
+            ss << j;
+            
+            std::string newstr;
+            
+            ss >> newstr;   
+            
             std::cout << "received " << rq_str << " from " << id_str << std::endl;
-            recv_spec_msg(rq_str);
+            recv_spec_msg(newstr);
             copied_id.copy(&identity);
             copied_msg.copy(&msg);
         }

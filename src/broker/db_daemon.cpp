@@ -7,16 +7,15 @@ void DatabaseDaemon::work() {
         for (std::list<std::string>::iterator it = waiting.begin(); it != waiting.end(); ++it) {
             redis3m::reply r = conn->run(redis3m::command("GET") << *it);
             if (r.integer() != 0) {
-                stringstream ss;
+                std::stringstream ss;
                 json j;
                 ss << r.str(); 
                 ss >> j;
                 ss.clear();
 
                 std::string identity = j["identity"]; 
-                // relay.send();
-                // do something...         
-                // need to figure out how this relay business works
+                const char * identity_msg = identity.c_str();
+                relay.send(identity_msg, strlen(identity_msg));
             }
         }    
     }

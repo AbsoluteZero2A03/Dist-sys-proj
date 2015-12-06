@@ -3,8 +3,10 @@
 #include "json/json.hpp"
 #include "cppzmq/zmq.hpp"
 #include <sstream>
+#include <cstring>
 #include <redis3m/redis3m.hpp> 
 
+using json = nlohmann::json;
 
 class DatabaseDaemon {
     public:
